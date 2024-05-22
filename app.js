@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cookieParser = require("cookie-parser");
+
 const usersRouter = require('./routes/users');
-const gamesRouter = require('./routes/games');
 const categoriesRouter = require('./routes/categories');
+const gamesRouter = require('./routes/games');
 const apiRouter = require("./routes/apiRouter");
 const pagesRouter = require("./routes/pagesRouter");
-const cookieParser = require("cookie-parser");
 
 const connectToDatabase = require('./database/connect');
 const cors = require('./middlewares/cors');
