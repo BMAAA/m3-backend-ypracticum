@@ -3,18 +3,14 @@ const games = require("../models/game");
 // middlewares/games.js
 
 const findAllGames = async (req, res, next) => {
-  if(req.query["categories.name"]) { 
-    req.gamesArray = await games.findGameByCategory(req.query["categories.name"]);
-    next();
-    return;
-  }
+  console.log("GET /games");
   req.gamesArray = await games
     .find({})
     .populate("categories")
     .populate({
       path: "users",
       select: "-password"
-    })
+    });
   next();
 };
 
@@ -31,6 +27,7 @@ const createGame = async (req, res, next) => {
 };
 
 const findGameById = async (req, res, next) => {
+  console.log("findGameById");
   try {
     req.game = await games
       .findById(req.params.id)

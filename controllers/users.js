@@ -8,4 +8,9 @@ const sendUserUpdated = (req, res) => {
   res.status(200).send(JSON.stringify({ message: "Пользователь обновлен" }));
 };
 
-module.exports = { sendUser, sendUserUpdated };
+const sendAllUsers = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(req.usersArray));
+};
+
+module.exports = { sendUser, sendUserUpdated, sendAllUsers };
