@@ -1,10 +1,10 @@
 const usersRouter = require('express').Router();
 
 const { findAllUsers, createUser, findUserById, updateUser, deleteUser, filterPassword, hashPassword } = require('../middlewares/users');
-const { sendUser, sendUserUpdated } = require('../controllers/users');
-const checkAuth = require("../middlewares/auth.js")
+const { sendUser, sendUserUpdated, sendAllUsers } = require('../controllers/users');
+const { checkAuth } = require("../middlewares/auth")
 
-usersRouter.get("/users", findAllUsers, filterPassword, sendUser);
+usersRouter.get("/users", findAllUsers, filterPassword, sendAllUsers);
 usersRouter.get("/users/:id", findUserById, filterPassword, sendUser);
 usersRouter.post(
     "/users",
